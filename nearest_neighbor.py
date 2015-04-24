@@ -1,8 +1,10 @@
 import sys
 def input_file():
+    #open file - with function opens and closes automatically
     with open(str(sys.argv[1]), 'r') as f:
         points = []
         for line in f:
+            #add all the points in the file as a list of lists
             points.append([float(g) for g in line.split()])
         return points
         
@@ -30,17 +32,22 @@ def minCross(points, mid, d):
     return d
     
 def minSubarray(points):
+    #BaseCase: If only one point, there are no neighboring points
     if len(points) == 1:
         return float("inf")
+    #BaseCase: If only two points, return the distance between them
     if len(points) == 2:
         return distance(points[0], points[1])
+    #Use recursion to spilt the number of points in half
     mid = len(points) / 2
     L_min = minSubarray(points[:mid])
     R_min = minSubarray(points[mid:])
+    #Find the minimum distance between the right and left, then check the stip in the middle
     d = min(L_min, R_min)
     M_min = minCross(points, mid, d)
     return min(d, M_min)
     
+#Error checking the passed in arguments
 if len(sys.argv) != 2:
     print "You must add a path to the file\n"
     sys.exit()
