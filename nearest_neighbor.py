@@ -54,4 +54,8 @@ if len(sys.argv) != 2:
     
 points = input_file()
 points_x = sorted(points, key = lambda p: p[0])
-print minSubarray(points_x)
+#print minSubarray(points_x)
+s = str(sys.argv[1])
+s = s.replace(".txt", "_distance.txt")
+with open(s, 'w+') as f:
+    f.write(str(minSubarray(points_x)))
