@@ -20,5 +20,4 @@ def min_dist(points):
     return shortest
     
 points = input_file()
-points_x = sorted(points, key = lambda p: p[0])
-print min_dist(points_x)
+print min_dist(points)

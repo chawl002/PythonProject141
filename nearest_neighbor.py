@@ -19,16 +19,16 @@ def minCross(points, mid, d):
     #stores the points nearest to the middle point
     stripe = []
     #make sure the new distance for the middle section is smaller than the minimum distance from L and R 
-    for p in points:
-        if abs(p[0] - midx) < d:
-            stripe += [p]
+    for i in points:
+        if abs(i[0] - midx) < d:
+            stripe += [i]
     #sort by y values
-    stripe.sort(key = lambda p: p[1])
+    stripe.sort(key = lambda i: i[1])
     #check all the points within 8 y placements of each other in list stripe
-    for i in range(0, len(stripe)):
+    for j in range(0, len(stripe)):
         #this nestled loop is constant
-        for j in range(i+1, min(i+8,len(stripe))):
-            d = min(d, distance(points[i], points[j]))
+        for k in range(j+1, min(j+8,len(stripe))):
+            d = min(d, distance(points[j], points[k]))
     return d
     
 def minSubarray(points):
