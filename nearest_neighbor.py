@@ -1,11 +1,6 @@
 import sys
-def input_file(filename = sys.argv[1]):
-    try:
-        open(filename)
-    except Exception:
-        sys.exit()
-        
-    with filename as f:
+def input_file():
+    with open(str(sys.argv[1]), 'r') as f:
         points = []
         for line in f:
             points.append([float(g) for g in line.split()])
@@ -39,13 +34,6 @@ def minSubarray(points):
         return float("inf")
     if len(points) == 2:
         return distance(points[0], points[1])
-    #if len(points) == 3
-     #   shortest = distance(points[0], points[1])
-      #  if distance(points[0], points[2]) < shortest
-       #     shortest = distance(points[0], points[2])
-        #if distance(points[1], points[2]) < shortest
-         #   shortest = distance(points[1], points[2]))
-        #return shortest
     mid = len(points) / 2
     L_min = minSubarray(points[:mid])
     R_min = minSubarray(points[mid:])
